@@ -10,9 +10,9 @@ import React, { useState } from 'react';
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 // Import the dummyData
 
-import Posts from './components/Posts/Post'
+import Posts from './components/Posts/Posts'
 import SearchBar from './components/SearchBar/SearchBar';
-import dummyData from './dummy-data.js';
+import dummyData from './dummy-data';
 
 import './App.css';
 
@@ -23,6 +23,7 @@ const App = () => {
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   const [posts, setPosts] = useState(dummyData);
   const [search, setSearch] = useState('')
+
   const likePost = postId => {
     /*
       This function serves the purpose of increasing the number of likes by one, of the post with a given id.
@@ -43,7 +44,7 @@ const App = () => {
        * find -> loop over an array, based on a condition return the FIRST element it finds that matches that condition 
        */
     const updatedLikes = posts.map(id => {
-      if(postId === id){
+      if(postId === id.id){
         return { ...id, likes: id.likes + 1}
         
       } else{
